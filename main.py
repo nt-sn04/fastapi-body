@@ -43,3 +43,23 @@ async def udpate_product(
     print(notefy)
 
     return {'message': 'ok'}
+
+
+# POST /api/books
+{
+    "title": '',
+    "descrioption": '',
+    "isbn": 321412,
+    "published_date": 'datetime format',
+    "auhor": {
+        "first_name": 'str',
+        "last_name": 'str',
+        "birth_date": 'date',
+    },
+    "images": [
+        {
+            "name": "str",
+            "url": ''
+        }
+    ]
+}

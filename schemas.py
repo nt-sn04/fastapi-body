@@ -1,7 +1,8 @@
 from typing import Annotated, Optional, List
 from enum import Enum
+from datetime import datetime
 
-from pydantic import BaseModel, Field, HttpUrl
+from pydantic import BaseModel, Field, HttpUrl, field_validator
 
 
 class Data(BaseModel):
@@ -27,6 +28,14 @@ class ProductCreate(BaseModel):
     stock: Annotated[int, Field(ge=1)]
     status: ProductStatus
     images: List[ProductImage]
+    # date: datetime
+
+    # @field_validator('date')
+    # @staticmethod
+    # def validate_date(cls, value: datetime):
+    #     if value < datetime(2024, 1, 1):
+    #         raise ValueError("datetime must be >= 2024-01-01")
+    #     return value
 
 
 class ProductUpdate(BaseModel):
