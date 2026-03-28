@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from schemas import BookCreate
+
 from pydantic import BaseModel
 
 
@@ -32,3 +34,14 @@ async def calculate(data: Data):
         return {"error": "Notogri operator"}
     
     return {"result": result}
+
+books = []
+
+@app.post("/api/book")
+async def create_book(
+    data: BookCreate
+):
+    book = data.model_dump()
+    books.append(book)
+
+    return {"message": "ok"}
